@@ -1,0 +1,118 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    color-scheme: dark;
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+  
+  body {
+    background-color: #070F1E;
+    color: #F8FAFC;
+    min-height: 100vh;
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: relative;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  #root {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+
+  /* Custom Clean Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #070F1E;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #162846;
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #39FF14;
+  }
+}
+
+@layer components {
+  /* Subtle Tech Grid Background */
+  .bg-tech-grid {
+    background-size: 36px 36px;
+    background-image: 
+      linear-gradient(to right, rgba(22, 40, 70, 0.18) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(22, 40, 70, 0.18) 1px, transparent 1px);
+  }
+
+  /* Glassmorphism Card Style */
+  .glass-card {
+    background: rgba(11, 19, 37, 0.75);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(30, 41, 59, 0.85);
+  }
+
+  .glass-card-hover {
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  
+  .glass-card-hover:hover {
+    border-color: rgba(57, 255, 20, 0.45);
+    box-shadow: 0 0 20px rgba(57, 255, 20, 0.12);
+    transform: translateY(-2px);
+  }
+
+  /* Neon Glow Accent Utilities */
+  .neon-border {
+    border: 1px solid rgba(57, 255, 20, 0.4);
+    box-shadow: 0 0 15px rgba(57, 255, 20, 0.2);
+  }
+}
+
+/* Dedicated Clean Print Styles for ATS CV (A4 Standard) */
+@media print {
+  /* Hide all non-printable elements */
+  body * {
+    visibility: hidden;
+  }
+
+  #ats-cv-document, #ats-cv-document * {
+    visibility: visible;
+  }
+
+  #ats-cv-document {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 20mm !important;
+    background: #ffffff !important;
+    color: #111827 !important;
+    box-shadow: none !important;
+    border: none !important;
+    font-size: 11pt !important;
+    line-height: 1.4 !important;
+  }
+
+  @page {
+    size: A4;
+    margin: 10mm;
+  }
+}
